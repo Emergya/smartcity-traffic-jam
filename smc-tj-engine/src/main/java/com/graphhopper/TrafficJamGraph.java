@@ -8,6 +8,7 @@ import com.emergya.smc.model.Issue;
 import com.graphhopper.routing.util.EdgeFilter;
 import com.graphhopper.routing.util.FlagEncoder;
 import com.graphhopper.routing.util.Weighting;
+import com.graphhopper.storage.index.LocationIndex;
 import com.graphhopper.storage.index.QueryResult;
 import com.graphhopper.util.EdgeIteratorState;
 
@@ -22,10 +23,12 @@ public class TrafficJamGraph extends GraphHopper {
     public void determineForbiddenEdges(List<Issue> issues){
     	forbiddenEdges = new HashSet<>();
     	for(Issue issue : issues){
-    		QueryResult result = this.getLocationIndex().findClosest(issue.getLatitude(), issue.getLongitude(), EdgeFilter.ALL_EDGES);
+    		LocationIndex index = this.getLocationIndex();
+    		QueryResult result = index.findClosest(issue.getLatitude(), issue.getLongitude(), EdgeFilter.ALL_EDGES);
     		EdgeIteratorState edge = result.getClosestEdge();
     		forbiddenEdges.add(edge.getEdge());
     	}
+    	this.initCHPrepare();
     }
 
 	@Override

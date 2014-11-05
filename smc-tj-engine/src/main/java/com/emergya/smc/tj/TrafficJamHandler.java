@@ -13,6 +13,7 @@ import com.emergya.smc.model.Issue;
 import com.emergya.smc.model.Stop;
 import com.graphhopper.GHRequest;
 import com.graphhopper.GHResponse;
+import com.graphhopper.GraphHopper;
 import com.graphhopper.TrafficJamGraph;
 import com.graphhopper.routing.util.EncodingManager;
 import com.graphhopper.routing.util.FlagEncoder;
@@ -38,17 +39,16 @@ public class TrafficJamHandler {
 
 	public LineString getRouteTrafficJam(Stop stopFrom, Stop stopTo, List<Issue> issues) {
 		LineString route = null;
+		
 		hopper.determineForbiddenEdges(issues);
+		EncodingManager encoding = hopper.getEncodingManager();
+		FlagEncoder flagEncoder = encoding.getSingle();
+		hopper.createWeighting(this.WEIGHTING, flagEncoder);
 		
 		GHRequest request = new GHRequest(stopFrom.getLatitude(),
 				stopFrom.getLongitude(), stopTo.getLatitude(),
 				stopTo.getLongitude()).setWeighting(this.WEIGHTING).setVehicle(
 				this.VEHICLE);
-			
-//		EncodingManager encoding = hopper.getEncodingManager();
-//		FlagEncoder flagEncoder = encoding.getSingle();
-//		hopper.createWeighting(this.WEIGHTING, flagEncoder);
-		//request.setWeighting(this.WEIGHTING);
 		
 		GHResponse response = hopper.route(request);
 		PointList points = response.getPoints();
@@ -63,7 +63,7 @@ public class TrafficJamHandler {
 		hopper.setOSMFile(this.OSM_FILE_PATH);
 		hopper.setGraphHopperLocation(this.GRAPH_PATH);
 		hopper.setEncodingManager(new EncodingManager(this.VEHICLE));
-		//hopper.setCHShortcuts(this.WEIGHTING);
+		hopper.setCHShortcuts(this.WEIGHTING);
 
 		hopper.importOrLoad();
 	}
