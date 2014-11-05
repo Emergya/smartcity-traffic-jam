@@ -13,7 +13,6 @@ import com.emergya.smc.model.Issue;
 import com.emergya.smc.model.Stop;
 import com.graphhopper.GHRequest;
 import com.graphhopper.GHResponse;
-import com.graphhopper.GraphHopper;
 import com.graphhopper.TrafficJamGraph;
 import com.graphhopper.routing.util.EncodingManager;
 import com.graphhopper.routing.util.FlagEncoder;
@@ -41,9 +40,6 @@ public class TrafficJamHandler {
 		LineString route = null;
 		
 		hopper.determineForbiddenEdges(issues);
-		EncodingManager encoding = hopper.getEncodingManager();
-		FlagEncoder flagEncoder = encoding.getSingle();
-		hopper.createWeighting(this.WEIGHTING, flagEncoder);
 		
 		GHRequest request = new GHRequest(stopFrom.getLatitude(),
 				stopFrom.getLongitude(), stopTo.getLatitude(),

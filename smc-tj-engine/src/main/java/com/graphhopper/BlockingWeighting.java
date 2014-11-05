@@ -17,8 +17,6 @@ public class BlockingWeighting implements Weighting
         this.encoder = encoder;
         this.maxSpeed = encoder.getMaxSpeed();
         this.forbiddenEdges = forbiddenEdges;
-//        this.forbiddenEdges = new HashSet<>();
-//        this.forbiddenEdges.add(Integer.valueOf(3217434));
     }
 
     @Override
@@ -30,9 +28,9 @@ public class BlockingWeighting implements Weighting
     @Override
     public double calcWeight(EdgeIteratorState edgeState, boolean reverse){
     	if(this.forbiddenEdges != null){
-    		for(Integer edge : this.forbiddenEdges){
-    			System.out.println("Comparando arista: " + edge + " - " + edgeState.getEdge());
-    			if(edge == edgeState.getEdge()){
+    		for(int edge : this.forbiddenEdges){
+    			if(edge == edgeState.getBaseNode()){
+    				System.out.println(edge + " - " + edgeState.getBaseNode());
     				return Double.POSITIVE_INFINITY;
     			}
     		}

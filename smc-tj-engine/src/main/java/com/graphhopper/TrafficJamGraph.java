@@ -22,11 +22,11 @@ public class TrafficJamGraph extends GraphHopper {
 	Set<Integer> forbiddenEdges;
     public void determineForbiddenEdges(List<Issue> issues){
     	forbiddenEdges = new HashSet<>();
+    	LocationIndex index = this.getLocationIndex();
     	for(Issue issue : issues){
-    		LocationIndex index = this.getLocationIndex();
     		QueryResult result = index.findClosest(issue.getLatitude(), issue.getLongitude(), EdgeFilter.ALL_EDGES);
     		EdgeIteratorState edge = result.getClosestEdge();
-    		forbiddenEdges.add(edge.getEdge());
+    		forbiddenEdges.add(edge.getAdjNode());
     	}
     	this.initCHPrepare();
     }
