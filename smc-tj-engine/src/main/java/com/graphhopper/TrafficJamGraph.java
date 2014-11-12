@@ -26,9 +26,10 @@ public class TrafficJamGraph extends GraphHopper {
     	for(Issue issue : issues){
     		QueryResult result = index.findClosest(issue.getLatitude(), issue.getLongitude(), EdgeFilter.ALL_EDGES);
     		EdgeIteratorState edge = result.getClosestEdge();
-    		forbiddenEdges.add(edge.getAdjNode());
+    		
+    		forbiddenEdges.add(edge.getEdge());
     	}
-    	this.initCHPrepare();
+    	//this.initCHPrepare();
     }
 
 	@Override

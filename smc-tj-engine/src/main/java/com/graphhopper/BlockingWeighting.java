@@ -29,8 +29,8 @@ public class BlockingWeighting implements Weighting
     public double calcWeight(EdgeIteratorState edgeState, boolean reverse){
     	if(this.forbiddenEdges != null){
     		for(int edge : this.forbiddenEdges){
-    			if(edge == edgeState.getBaseNode()){
-    				System.out.println(edge + " - " + edgeState.getBaseNode());
+    			if(edge == edgeState.getEdge()){
+    				System.out.println(edge + " - " + edgeState.getEdge());
     				return Double.POSITIVE_INFINITY;
     			}
     		}

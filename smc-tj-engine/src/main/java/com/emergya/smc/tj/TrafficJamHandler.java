@@ -56,11 +56,11 @@ public class TrafficJamHandler {
 	public void init() {
 		hopper = (TrafficJamGraph) new TrafficJamGraph().forServer();
 		hopper.setInMemory(true);
+		hopper.disableCHShortcuts();
 		hopper.setOSMFile(this.OSM_FILE_PATH);
 		hopper.setGraphHopperLocation(this.GRAPH_PATH);
 		hopper.setEncodingManager(new EncodingManager(this.VEHICLE));
-		hopper.setCHShortcuts(this.WEIGHTING);
-
+		//hopper.setCHShortcuts(this.WEIGHTING);
 		hopper.importOrLoad();
 	}
 
