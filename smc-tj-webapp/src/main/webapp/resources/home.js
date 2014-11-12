@@ -91,13 +91,8 @@ var mtsp = {
             data: JSON.stringify({origin: mtsp.stopFrom, target: mtsp.stopTo, issues: mtsp.issues}),
             success: function (data) {
                 console.debug(data);
-                var color = null;
-                for(var i=0; i<data.length; i++){
-                	color = calculateRouteThis.get_random_color();
-                	for(var j=0; j<data[i].length; j++){
-                		L.geoJson(data[i][j].route, {"color": color}).addTo(calculateRouteThis.map);
-                	}
-                }
+                var color = calculateRouteThis.get_random_color();
+                L.geoJson(data, {"color": color}).addTo(calculateRouteThis.map);
             },
             dataType: "json",
             contentType: "application/json"
