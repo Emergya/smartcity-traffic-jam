@@ -3,8 +3,9 @@ package com.emergya.smc.tj.webapp.dto;
 import java.io.Serializable;
 import java.util.List;
 
-import com.emergya.smc.model.Issue;
-import com.emergya.smc.model.Stop;
+import com.emergya.smc.tj.model.Issue;
+import com.emergya.smc.tj.model.Stop;
+
 
 /**
 *
@@ -15,6 +16,7 @@ public class TrafficJamRoutingRequest implements Serializable {
 	private Stop origin;
 	private Stop target;
 	private List<Issue> issues;
+       
 	
 	public Stop getOrigin() {
 		return origin;
@@ -34,6 +36,6 @@ public class TrafficJamRoutingRequest implements Serializable {
 	public void setIssues(List<Issue> issues) {
 		this.issues = issues;
 	}
-	
-	
+
+		
 }

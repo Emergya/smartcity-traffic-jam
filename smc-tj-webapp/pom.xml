@@ -60,6 +60,7 @@
 			<groupId>com.emergya.smc</groupId>
 			<artifactId>smc-tj-engine</artifactId>
 			<version>0.1</version>
+		 <type>jar</type>
 		</dependency>
 	</dependencies>
 

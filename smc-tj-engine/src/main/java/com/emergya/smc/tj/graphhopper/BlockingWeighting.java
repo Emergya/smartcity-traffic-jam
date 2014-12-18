@@ -1,4 +1,4 @@
-package com.graphhopper;
+package com.emergya.smc.tj.graphhopper;
 
 import java.util.Set;
 

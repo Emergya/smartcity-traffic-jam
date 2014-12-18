@@ -9,13 +9,12 @@ import org.geojson.LngLatAlt;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.emergya.smc.model.Issue;
-import com.emergya.smc.model.Stop;
+import com.emergya.smc.tj.model.Issue;
+import com.emergya.smc.tj.model.Stop;
 import com.graphhopper.GHRequest;
 import com.graphhopper.GHResponse;
-import com.graphhopper.TrafficJamGraph;
+import com.emergya.smc.tj.graphhopper.TrafficJamGraph;
 import com.graphhopper.routing.util.EncodingManager;
-import com.graphhopper.routing.util.FlagEncoder;
 import com.graphhopper.util.PointList;
 
 /**
