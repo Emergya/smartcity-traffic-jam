@@ -52,7 +52,7 @@ public class TrafficJamRoutingController {
         for (EventVO e : events) {
             Issue eventIssue = new Issue();
             eventIssue.setName(e.getDescription());
-            eventIssue.setId(1);
+            eventIssue.setId(Integer.parseInt(e.getCode()));
             eventIssue.setLatitude(Double.parseDouble(e.getLocation().split(",")[0]));
             eventIssue.setLongitude(Double.parseDouble(e.getLocation().split(",")[1]));
             eventIssue.setEndDate(e.getEndTimestamp());
