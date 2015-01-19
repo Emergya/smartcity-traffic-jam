@@ -1,10 +1,11 @@
-package com.graphhopper;
+package com.emergya.smc.tj.graphhopper;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.emergya.smc.model.Issue;
+import com.emergya.smc.tj.model.Issue;
+import com.graphhopper.GraphHopper;
 import com.graphhopper.routing.util.EdgeFilter;
 import com.graphhopper.routing.util.FlagEncoder;
 import com.graphhopper.routing.util.Weighting;

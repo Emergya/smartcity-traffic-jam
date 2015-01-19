@@ -1,4 +1,4 @@
-package com.emergya.smc.model;
+package com.emergya.smc.tj.model;
 
 import java.io.Serializable;
 
